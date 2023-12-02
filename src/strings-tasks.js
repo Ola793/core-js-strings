@@ -453,8 +453,9 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  // throw new Error('Not implemented');
+  return str.slice(1, str.length - 1);
 }
 
 /**
@@ -472,8 +473,9 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  // throw new Error('Not implemented');
+  return str.split(';');
 }
 
 /**
@@ -492,8 +494,24 @@ function extractEmails(/* str */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  // throw new Error('Not implemented');
+  const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLM'.split('');
+  const lowerCase = 'abcdefghijklmnopqrstuvwxyzabcdefghijklm'.split('');
+  const cipherGap = 13;
+
+  return str
+    .split('')
+    .map((letter) => {
+      if (upperCase.includes(letter))
+        return upperCase[upperCase.indexOf(letter) + cipherGap];
+
+      if (lowerCase.includes(letter))
+        return lowerCase[lowerCase.indexOf(letter) + cipherGap];
+
+      return letter;
+    })
+    .join('');
 }
 
 /**
