@@ -251,9 +251,12 @@ function endsWith(str, substr) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
-  // return minutes.padStart(2, '0').concat(seconds.padStart(2, '0'));
+function formatTime(minutes, seconds) {
+  // throw new Error('Not implemented');
+  const showMinutes = minutes.toString().padStart(2, '0');
+  const showSeconds = seconds.toString().padStart(2, '0');
+
+  return `${showMinutes}:${showSeconds}`;
 }
 
 /**
